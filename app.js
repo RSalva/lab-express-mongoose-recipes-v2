@@ -47,6 +47,15 @@ app.post("/recipes", (req, res, next) => {
 
 //  Iteration 5 - Get a Single Recipe
 //  GET  /recipes/:id route
+app.get("/recipes", (req, res, next) => {
+	Recipe.find()
+		.then((recipes) => {
+			res.status(200).json(recipes);
+		})
+		.catch((error) => {
+			res.status(500).json({ message: "Error listing recipes" });
+		});
+});
 
 
 //  Iteration 6 - Update a Single Recipe
