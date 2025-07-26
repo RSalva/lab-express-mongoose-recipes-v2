@@ -1,6 +1,8 @@
 const express = require("express");
 const logger = require("morgan");
 
+const mongoose = require("mongoose");
+
 const app = express();
 
 // MIDDLEWARE
@@ -11,7 +13,10 @@ app.use(express.json());
 
 // Iteration 1 - Connect to MongoDB
 // DATABASE CONNECTION
-
+mongoose
+.connect("mongodb://127.0.0.1:27017/express-mongoose-recipes-dev")
+	.then(() => console.info("Connected to express-mongoose-recipes-dev database!"))
+	.catch(() => console.error("Error connecting to the mongo database!", err));
 
 
 // ROUTES
